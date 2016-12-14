@@ -14,4 +14,6 @@ This repo is aimed to group my personnal scripts. Don't hesitate to reuse them a
 
 Add a custom button that will allow you to create an archive of the selected files/folder
 
+<img src="https://github.com/cavo789/xyplorer/blob/master/scripts/ArchiveSelectedFiles.png" />
+
 [go to ArchiveSelectedFiles.sys](https://github.com/cavo789/xyplorer/tree/master/scripts)
