@@ -1,3 +1,5 @@
+![Banner](./images/banner.png)
+
 # Repository with tips & tricks for the tremendous XYplorer Windows software
 
 <!-- concat-md::toc -->

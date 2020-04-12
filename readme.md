@@ -1,4 +1,6 @@
-﻿# Repository with tips & tricks for the tremendous XYplorer Windows software
+﻿![Banner](./images/banner.png)
+
+# Repository with tips & tricks for the tremendous XYplorer Windows software
 
 <!-- table-of-contents - start -->
 * [Tutorial](#tutorial)
