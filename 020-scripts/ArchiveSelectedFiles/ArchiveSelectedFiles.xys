@@ -10,22 +10,31 @@
 // Changes
 // -------
 // 20200506 - Add an exclusion so the .git file is excluded from the archive
+// 20200506 - Allow to select multiple folders (one archive will be created by folder)
 //
 // To use the script, just select one or more files/folders and then press your custom button.
 
-   // Adapt this line -> point to your compression tool
-   $prog = "C:\Program Files\7-Zip\7z.exe";
+    // Adapt this line -> point to your compression tool
+    $prog = "C:\Program Files\7-Zip\7z.exe";
 
-   // Retrieve the current folder (displayed in the xlPlorer current pane)
-   $CurrentPath = get("path");
+    // Retrieve the current folder (displayed in the xlPlorer current pane)
+    $currentPath = get("path");
 
-   // Define the name of the backup file : in the current folder, name backup_xxxxx (followed by the system date/time) and .7z as suffix
-   $BackupFileName = "$CurrentPath\backup_<date yyyymmdd_hhnnss>.7z";
+    // Get the list of selected files/folders in xyPlorer
+    $items = get("SelectedItemsPathNames", "|");
 
-   // Get the list of selected files/folders in xyPlorer
-   $SelectedItems = get("SelectedItemsPathNames", "|");
+    // One by one process each files/folders and add them in the archive, compression level : 5
+    foreach($item, $items, "|") {
 
-   // One by one process each files/folders and add them in the archive, compression level : 5
-   foreach($Item, $SelectedItems, "|") {
-      run """$prog"" a -xr!"".git"" -mx5 ""$BackupFileName"" ""$Item""", , 2, 1; 
-   }
+        $baseName = getpathcomponent($item, "file");
+        
+        // Define the name of the backup file : in the current folder, name backup_xxxxx (followed by the system date/time) and .7z as suffix
+        $archive = "$currentPath\""$baseName""_backup_<date yyyymmdd_hhnnss>.zip";
+
+        // run command, [directory], [wait=0] [, intWindowStyle]
+        // intWindowStyle
+        //    0: Hides the window
+        //    2: minimized window
+        //    3: maximized window
+        run """$prog"" a -xr!"".git"" -mx5 ""$archive"" ""$item""", , 2, 0; 
+    }
