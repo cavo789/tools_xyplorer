@@ -1,13 +1,17 @@
-// AVONTURE Christophe - 13/12/2016
+// AVONTURE Christophe - 20161213
 // Script for xyPlorer Pro version - Create an archive of selected files / folders
 //
-//  1. In xyPlorer, use the adress bar and go to "<xyscripts>"
+//  1. In xyPlorer, use the address bar and go to "<xyscripts>"
 //  2. Save this script there with a .xys extension (f.i. <xyscripts>\ArchiveSelectedFiles.xys)
 //  3. Add a custom button to the xyPlorer toolbar
-//  4. Right clic on the button and select Modify in the contextual menu
+//  4. Right click on the button and select Modify in the contextual menu
 //  5. In the left action, just type this : load "ArchiveSelectedFiles.xys"
 //
-//  To use the script, just select one or more files/folders and then press your custom button.
+// Changes
+// -------
+// 20200506 - Add an exclusion so the .git file is excluded from the archive
+//
+// To use the script, just select one or more files/folders and then press your custom button.
 
    // Adapt this line -> point to your compression tool
    $prog = "C:\Program Files\7-Zip\7z.exe";
@@ -23,5 +27,5 @@
 
    // One by one process each files/folders and add them in the archive, compression level : 5
    foreach($Item, $SelectedItems, "|") {
-      run """$prog"" a -mx5 ""$BackupFileName"" ""$Item""", , 2, 1; 
+      run """$prog"" a -xr!"".git"" -mx5 ""$BackupFileName"" ""$Item""", , 2, 1; 
    }
