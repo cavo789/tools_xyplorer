@@ -1,0 +1,55 @@
+// AVONTURE Christophe - 20161213
+// Script for xyPlorer Pro version - Create an archive of selected files / folders
+//
+//  1. In xyPlorer, use the address bar and go to "<xyscripts>"
+//  2. Save this script there with a .xys extension (f.i. <xyscripts>\ArchiveSelectedFiles.xys)
+//  3. Add a custom button to the xyPlorer toolbar
+//  4. Right click on the button and select Modify in the contextual menu
+//  5. In the left action, just type this : load "ArchiveSelectedFiles.xys"
+//
+// Changes
+// -------
+// 20200506 - Add an exclusion so the .git file is excluded from the archive
+// 20200506 - Allow to select multiple folders (one archive will be created by folder)
+//
+// To use the script, just select one or more files/folders and then press your custom button.
+
+"Multi-Script: Get report Bootstrap table"
+   $filename="%TMP%\Report_<date yyyymmdd_hhnnss>.htm";
+   writefile($filename,
+
+     report("<tr><td>{# @@@@}</td><td>{FullName}</td>
+     <td align='right'>{Size B} {dir [DIR]|bytes|}</td>
+     <td>{Created}</td><td>{Modified}</td></tr>", ,
+     "<html lang='en'><head><link rel="stylesheet" href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></head><body><table class='table table-striped' cellpadding='4'><thead><tr><th>#</th><th>Filename</th><th>Size</th><th>Creation date/time</th><th>Last modification date/time</th></tr></thead><tbody>", "</tbody></table></body></html>"));
+
+   open quote("chrome")." ".quote($filename);
+
+   // Wait one second and delete the file
+   wait 1000;
+   delete 0, 0, $filename;
+
+"Multi-Script: Get report Bootstrap table (light)"
+   $filename="%TMP%\Report_<date yyyymmdd_hhnnss>.htm";
+   writefile($filename, 
+     report("<tr><td>{# @@@@}</td><td>{FullName}</td>
+     </tr>", ,
+     "<html lang='en'><head><link rel="stylesheet" href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></head><body><table class='table table-striped' cellpadding='4'><thead><tr><th>#</th><th>Filename</th></tr></thead><tbody>", "</tbody></table></body></html>"));
+
+   open quote("chrome")." ".quote($filename);
+
+   // Wait one second and delete the file
+   wait 1000;
+   delete 0, 0, $filename;
+
+"Multi-Script: Liste numérotée"
+   $filename="%TMP%\Report_<date yyyymmdd_hhnnss>.htm";
+   writefile($filename, 
+     report("<li>{FullName}</li>", ,
+     "<html lang='en'><head><link rel="stylesheet" href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></head><body><ol>", "</ol></body></html>"));
+
+   open quote("chrome")." ".quote($filename);
+
+   // Wait one second and delete the file
+   wait 1000;
+   delete 0, 0, $filename;
