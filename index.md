@@ -1,10 +1,10 @@
-![Banner](./images/banner.png)
-
 # Repository with tips & tricks for the tremendous XYplorer Windows software
+
+![Banner](./images/banner.png)
 
 <!-- concat-md::toc -->
 
-[XYplorer](https://www.xyplorer.com/) is an amazing explorer for Windows.  Something like "Windows Explorer" but no, the comparison can't be done in fact (we can’t compare a commodore 64 with a recent computer).
+![Logo](./images/xyplorer.png) [XYplorer](https://www.xyplorer.com/) is an amazing explorer for Windows.  Something like "Windows Explorer" but no, the comparison can't be done in fact (we can’t compare a commodore 64 with a recent computer).
 
 [XYplorer](https://www.xyplorer.com/) is a tool that let you to work very efficiently.
 

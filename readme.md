@@ -1,13 +1,14 @@
-<<<<<<< HEAD
-![Banner](images/banner.jpg)
+﻿<!-- This file has been generated automatically by the following script -->
+<!-- C:\Christophe\Repository\writing-documentation\concat-md\concat-md.ps1 -->
+<!-- So don't modify this file manually but run the tool once more instead -->
+
+<!-- Last refresh date: 2020-05-08 21:23:21 -->
+
+<!-- below, content of ./index.md -->
 
 # Repository with tips & tricks for the tremendous XYplorer Windows software
 
-[XYplorer](https://www.xyplorer.com/) is an amazing explorer for Windows. Something like "Windows Explorer" but no, the comparison can't be done in fact (we can’t compare a commodore 64 with a recent computer).
-=======
-﻿![Banner](./images/banner.png)
-
-# Repository with tips & tricks for the tremendous XYplorer Windows software
+![Banner](./images/banner.png)
 
 <!-- table-of-contents - start -->
 * [Tutorial](#tutorial)
@@ -15,33 +16,27 @@
 * [Scripts](#scripts)
     * [ArchiveSelectedFiles](#archiveselectedfiles)
     * [xyPlorer - Generates an html file with the list of files](#xyplorer-generates-an-html-file-with-the-list-of-files)
-    * [}</td><td>{FullName}</td>](#<td><td>fullname<td>)
-    * [}</td><td>{FullName}</td>](#<td><td>fullname<td>)
     * [xyPlorer - Tips & Tricks - Batch Rename Files](#xyplorer-tips-&-tricks-batch-rename-files)
        * [Replace one value with another ##](#replace-one-value-with-another-)
        * [Take out a prefix](#take-out-a-prefix)
+* [Visual Studio Code](#visual-studio-code)
 * [License](#license)
 <!-- table-of-contents - end -->
 
-[XYplorer](https://www.xyplorer.com/) is an amazing explorer for Windows.  Something like "Windows Explorer" but no, the comparison can't be done in fact (we can’t compare a commodore 64 with a recent computer).
->>>>>>> 2839dfaff67d41059c3c98dd98bbecd6b2a1f362
+![Logo](./images/xyplorer.png) [XYplorer](https://www.xyplorer.com/) is an amazing explorer for Windows.  Something like "Windows Explorer" but no, the comparison can't be done in fact (we can’t compare a commodore 64 with a recent computer).
 
 [XYplorer](https://www.xyplorer.com/) is a tool that let you to work very efficiently.
 
 One of my favorite function is the “Branch view” (“liste applatie” in French), allowing you to view every files just like if there were in one folder.
-<<<<<<< HEAD
-=======
+
+<!-- below, content of ./010-tutorial/readme.md -->
 
 ## Tutorial
->>>>>>> 2839dfaff67d41059c3c98dd98bbecd6b2a1f362
+
+<!-- below, content of ./010-tutorial/keyboard-shortcuts/readme.md -->
 
 ### XYplorer - Keyboard shortcuts
 
-<<<<<<< HEAD
-## Scripts
-
-### ArchiveSelectedFiles.sys
-=======
 * `CTRL-ALT-J` - **Filter files based on an extension** Selecting a file type (e.g. a PDF file) and `CTRL-ALT-J` will activate filter mode on that extension.
 * `CTRL-ALT-M` - **Select files based on an extension** Selecting a file type (e.g. a PDF file) and `CTRL-ALT-M` will select all files with the same extension.
 * `CTRL-ALT-N` - **Create new folder structure** Creates a folder and its subfolders at once (relative or absolute). For example: `DIRA\DIRB\DIRC` is entered and the three directories are created and the last one is immediately opened. `CTRL-ALT-N`
@@ -56,64 +51,29 @@ One of my favorite function is the “Branch view” (“liste applatie” in Fr
 * `F10` - **Double breadcrumbs (switch)** `F10`.
 * `F12` - **Show properties pane** Displays the lower part of the screen with the different properties of the selected element `F12`.
 
+<!-- below, content of ./020-scripts/readme.md -->
+
 ## Scripts
 
+<!-- below, content of ./020-scripts/ArchiveSelectedFiles/readme.md -->
+
 ### ArchiveSelectedFiles
->>>>>>> 2839dfaff67d41059c3c98dd98bbecd6b2a1f362
 
-Add a custom button that will allow you to create an archive of the selected files/folder
+Add a custom button that will allow you to create an archive of the selected files/folder.
 
-[ArchiveSelectedFiles](./images/ArchiveSelectedFiles.png)
+You can select one or more folder and the script will create one ZIP by selected folder as you can see in the illustration below
 
-[go to ArchiveSelectedFiles.sys](./ArchiveSelectedFiles.sys)
+![ArchiveSelectedFiles](./020-scripts/ArchiveSelectedFiles/images/ArchiveSelectedFiles.gif)
+
+<!-- below, content of ./020-scripts/MakeHtmlTableListOfFiles/readme.md -->
 
 ### xyPlorer - Generates an html file with the list of files
 
 In the catalog, create a new entry (see image below).  Click on the Edit button and copy the code below.
 
-```text
-"Multi-Script: Get report Bootstrap table"
-   $filename="%TMP%\Report_<date yyyymmdd_hhnnss>.htm";
-   writefile($filename,
-
-     report("<tr><td>{### }</td><td>{FullName}</td>
-     <td align='right'>{Size B} {dir [DIR]|bytes|}</td>
-     <td>{Created}</td><td>{Modified}</td></tr>", ,
-     "<html lang='en'><head><link rel="stylesheet" href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></head><body><table class='table table-striped' cellpadding='4'><thead><tr><th>#</th><th>Filename</th><th>Size</th><th>Creation date/time</th><th>Last modification date/time</th></tr></thead><tbody>", "</tbody></table></body></html>"));
-
-   open quote("chrome")." ".quote($filename);
-
-   // Wait one second and delete the file
-   wait 1000;
-   delete 0, 0, $filename;
-
-"Multi-Script: Get report Bootstrap table (light)"
-   $filename="%TMP%\Report_<date yyyymmdd_hhnnss>.htm";
-   writefile($filename,
-     report("<tr><td>{### }</td><td>{FullName}</td>
-     </tr>", ,
-     "<html lang='en'><head><link rel="stylesheet" href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></head><body><table class='table table-striped' cellpadding='4'><thead><tr><th>#</th><th>Filename</th></tr></thead><tbody>", "</tbody></table></body></html>"));
-
-   open quote("chrome")." ".quote($filename);
-
-   // Wait one second and delete the file
-   wait 1000;
-   delete 0, 0, $filename;
-
-"Multi-Script: Liste numérotée"
-   $filename="%TMP%\Report_<date yyyymmdd_hhnnss>.htm";
-   writefile($filename,
-     report("<li>{FullName}</li>", ,
-     "<html lang='en'><head><link rel="stylesheet" href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></head><body><ol>", "</ol></body></html>"));
-
-   open quote("chrome")." ".quote($filename);
-
-   // Wait one second and delete the file
-   wait 1000;
-   delete 0, 0, $filename;
-```
-
 ![Create HTML table with list of files](./020-scripts/MakeHtmlTableListOfFiles/images/script_create_table.png)
+
+<!-- below, content of ./030-batch/rename/readme.md -->
 
 ### xyPlorer - Tips & Tricks - Batch Rename Files
 
@@ -166,10 +126,16 @@ by putting nothing, so we say that the prefix should be removed.
 
 Running `^cck_ >` removes the prefix from the selected files.
 
+<!-- below, content of ./080-vscode/readme.md -->
+
+## Visual Studio Code
+
+> [XYplorer language support for VS Code](https://github.com/cavo789/tools_xyplorer.git)
+
+![Visual Studio Code](./080-vscode/images/vscode.png)
+
+<!-- below, content of ./999-License/readme.md -->
+
 ## License
 
-<<<<<<< HEAD
-[go to ArchiveSelectedFiles.sys](https://github.com/cavo789/xyplorer/tree/master/scripts)
-=======
 [MIT](LICENSE)
->>>>>>> 2839dfaff67d41059c3c98dd98bbecd6b2a1f362
