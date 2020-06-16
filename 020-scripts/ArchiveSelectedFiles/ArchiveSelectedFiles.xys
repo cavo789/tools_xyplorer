@@ -9,7 +9,8 @@
 //
 // Changes
 // -------
-// 20200506 - Add an exclusion so the .git file is excluded from the archive
+// 20200616 - Add an exclusion so the vendor folder is also excluded from the archive + msgbox
+// 20200506 - Add an exclusion so the .git folder is excluded from the archive
 // 20200506 - Allow to select multiple folders (one archive will be created by folder)
 //
 // To use the script, just select one or more files/folders and then press your custom button.
@@ -36,5 +37,7 @@
         //    0: Hides the window
         //    2: minimized window
         //    3: maximized window
-        run """$prog"" a -xr!"".git"" -mx5 ""$archive"" ""$item""", , 2, 0; 
+        run """$prog"" a -xr!"".git"" -xr!""vendor"" -mx5 ""$archive"" ""$item""", , 2, 0; 
     }
+
+    msg "Archive(s) created";
