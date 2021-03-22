@@ -1,6 +1,6 @@
 # Repository with tips & tricks for the tremendous XYplorer Windows software
 
-![Banner](./images/banner.png)
+![Banner](./banner.svg)
 
 <!-- concat-md::toc -->
 

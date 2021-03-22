@@ -37,7 +37,7 @@
         //    0: Hides the window
         //    2: minimized window
         //    3: maximized window
-        run """$prog"" a -xr!"".git"" -xr!""vendor"" -mx5 ""$archive"" ""$item""", , 2, 0; 
+        run """$prog"" a -xr!"".bin .cache .git .output"" -xr!""vendor"" -mx5 ""$archive"" ""$item""", , 2, 0; 
     }
 
     msg "Archive(s) created";
